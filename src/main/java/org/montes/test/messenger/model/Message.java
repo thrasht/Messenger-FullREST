@@ -1,7 +1,9 @@
 package org.montes.test.messenger.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -16,6 +18,7 @@ public class Message {
 	private Date created;
 	private String author;
 	private Map<Long, Comment> comments = new HashMap<>();
+	private List<Link> links = new ArrayList<Link>();
 	
 	
 	public Message () {
@@ -69,6 +72,20 @@ public class Message {
 		this.comments = comments;
 	}
 
+	public List<Link> getLinks() {
+		return links;
+	}
+
+	public void setLinks(List<Link> links) {
+		this.links = links;
+	}
+
+	public void addLink (String uri, String rel) {
+		Link link = new Link();
+		link.setLink(uri);
+		link.setRel(rel);
+		links.add(link);
+	}
 	
 	
 	
